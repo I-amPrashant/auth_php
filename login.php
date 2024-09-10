@@ -72,15 +72,7 @@
 <body>
     <main>
         <form action="#" method="POST">
-            <h1>Register</h1>
-            <div class="form-input">
-                <label for="firstname">First Name: </label>
-                <input type="text" name="firstname" id="firstname">
-            </div>
-            <div class="form-input">
-                <label for="lastname">Last Name: </label>
-                <input type="text" name="lastname" id="lastname">
-            </div>
+            <h1>Login</h1>
             <div class="form-input">
                 <label for="email">Email: </label>
                 <input type="email" name="email" id="email">
@@ -90,7 +82,7 @@
                 <input type="text" name="password" id="password">
             </div>
             <button type="submit">Submit</button>
-            <h3>Already have an account?<a href="#">Sign In</a></h3>
+            <h3>Don't have an account?<a href="register.php">Sign up</a></h3>
         </form>
     </main>
 </body>

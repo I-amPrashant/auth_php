@@ -1,3 +1,6 @@
+<?php
+    session_start();
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,11 +70,30 @@
         a{
             text-decoration: none;
         }
+        #message{
+            display: none;
+            font-weight: bold;
+            animation:animate 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes animate{
+            0%{
+                opacity: 0;
+                transform: scale(0);
+            }
+            100%{
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        #message.show{
+            display: block;
+        }
     </style>
 </head>
 <body>
     <main>
-        <form action="#" method="POST">
+        <!-- If you don't want the form data to reset after you submit then store your  form data in session after submitting and use it -->
+        <form action="registerValidate.php" method="POST">
             <h1>Register</h1>
             <div class="form-input">
                 <label for="firstname">First Name: </label>
@@ -90,6 +112,17 @@
                 <input type="text" name="password" id="password">
             </div>
             <button type="submit">Submit</button>
+            <h3 id="message" class="<?php echo isset($_SESSION['error']) || isset($_SESSION['success'])?'show':''; ?>" style="<?php echo isset($_SESSION['error'])?'color:red;':'color:green;' ?>">
+                <?php
+                if(isset($_SESSION['error'])){
+                    echo $_SESSION['error'];
+                    unset($_SESSION['error']);// Clear the error message after displaying it
+                }else{
+                    echo $_SESSION['success'];
+                    unset($_SESSION['success']);
+                }
+                ?>
+            </h3>
             <h3>Already have an account?<a href="login.php">Sign In</a></h3>
         </form>
     </main>
